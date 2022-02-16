@@ -27,9 +27,9 @@
 
 ### 开发任务
 
-[x] 使用 protobuf 定义支持的客户端命令，并使用 [prost]() 编译成 Rust 代码;
-[x] 封装 proto 模块，增加一些基本的类型转换，**src/pb/mode.rs**;
-[x] 设计如何处理请求命令，返回响应的接口抽象：CommandService trait;
-[x] 设计 Storage trait 的抽象设计, 实现 Memory Table;
-[x] CommandService 的具体实现；
-[ ] 完成所有命令的工作量。
+- [x] 使用 protobuf 定义支持的客户端命令，并使用 [prost]() 编译成 Rust 代码;
+- [x] 封装 proto 模块，增加一些基本的类型转换，**src/pb/mode.rs**;
+- [x] 设计如何处理请求命令，返回响应的接口抽象：CommandService trait;
+- [x] 设计 Storage trait 的抽象设计, 实现 Memory Table;
+- [x] CommandService 的具体实现；
+- [ ] 完成所有命令的工作量。
