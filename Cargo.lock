@@ -344,6 +344,8 @@ dependencies = [
  "kv",
  "prost",
  "prost-build",
+ "sled",
+ "tempfile",
  "thiserror",
  "tokio",
  "tracing",
