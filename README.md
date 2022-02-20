@@ -32,4 +32,5 @@
 - [x] 设计如何处理请求命令，返回响应的接口抽象：CommandService trait;
 - [x] 设计 Storage trait 的抽象设计, 实现 Memory Table;
 - [x] CommandService 的具体实现；
-- [ ] 完成所有命令的工作量。
+- [ ] 完成所有命令的工作量；
+- [ ] Iter trait 的高级抽象和 Service Execute 事件通知处理；
