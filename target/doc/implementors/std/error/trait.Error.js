@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["kv_server"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.58.1/std/error/trait.Error.html\" title=\"trait std::error::Error\">Error</a> for <a class=\"enum\" href=\"kv_server/enum.KvError.html\" title=\"enum kv_server::KvError\">KvError</a>","synthetic":false,"types":["kv_server::error::KvError"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

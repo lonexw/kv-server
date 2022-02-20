@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["kv_server","kvc","kvs"];
