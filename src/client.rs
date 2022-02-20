@@ -1,24 +1,16 @@
 use anyhow::Result;
-use kv_server::{CommandRequest, ProstClientStream, TlsClientConnector};
-use tokio::net::TcpStream;
+use kv_server::{start_client_with_config, CommandRequest, ClientConfig};
 use tracing::info;
 
 #[tokio::main]
 async fn main() -> Result<()> {
     tracing_subscriber::fmt::init();
 
-    let ca_cert = include_str!("../fixtures/ca.cert");
-
-    let addr = "127.0.0.1:9527";
-    // 连接服务器
-    let connector = TlsClientConnector::new("kvserver.acme.inc", None, Some(ca_cert))?;
-    let stream = TcpStream::connect(addr).await?;
-    let stream = connector.connect(stream).await?;
-
-    let mut client = ProstClientStream::new(stream);
-
     // 生成一个 HSET 命令
     let cmd = CommandRequest::new_hset("table1", "hello", "world".to_string().into());
+    
+    let config: ClientConfig = toml::from_str(include_str!("../fixtures/client.conf"))?;
+    let mut client = start_client_with_config(&config).await?;
 
     // 发送 HSET 命令
     let data = client.execute(cmd).await?;

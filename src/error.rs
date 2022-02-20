@@ -29,6 +29,8 @@ pub enum KvError {
     IoError(#[from] std::io::Error),
     #[error("TLS error")]
     TlsError(#[from] tokio_rustls::rustls::TLSError),
+    #[error("Parse config error")]
+    ConfigError(#[from] toml::de::Error),
 
     #[error("Internal error: {0}")]
     Internal(String),

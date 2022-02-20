@@ -28,6 +28,8 @@ rustls-native-certs = "0.5"
 futures = "0.3"
 yamux = "0.10"
 tokio-util = { version = "0.6", features = ["codec", "compat"]}
+serde = { version = "1", features = ["derive"] } # 序列化/反序列化
+toml = "0.5"
 
 [dev-dependencies]
 async-prost = "0.3.0"
