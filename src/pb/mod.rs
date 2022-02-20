@@ -91,6 +91,33 @@ impl CommandRequest {
             })),
         }
     }
+
+    /// 转换成 string 做错误处理
+    pub fn format(&self) -> String {
+        format!("{:?}", self)
+    }
+}
+
+
+impl CommandResponse {
+    pub fn ok() -> Self {
+        let mut result = CommandResponse::default();
+        result.status = StatusCode::OK.as_u16() as _;
+        result
+    }
+
+    pub fn internal_error(msg: String) -> Self {
+        CommandResponse {
+            status: StatusCode::INTERNAL_SERVER_ERROR.as_u16() as _,
+            message: msg,
+            ..Default::default()
+        }
+    }
+
+    /// 转换成 string 做错误处理
+    pub fn format(&self) -> String {
+        format!("{:?}", self)
+    }
 }
 
 impl Kvpair {

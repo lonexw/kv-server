@@ -27,6 +27,10 @@
 
 ### 开发任务
 
+系统架构如图：
+
+![](https://static001.geekbang.org/resource/image/82/2c/82da823b4eb16935fdeyy727e3b3262c.jpg?wh=1920x1145)
+
 - [x] 使用 protobuf 定义支持的客户端命令，并使用 [prost]() 编译成 Rust 代码;
 - [x] 封装 proto 模块，增加一些基本的类型转换，**src/pb/mode.rs**;
 - [x] 设计如何处理请求命令，返回响应的接口抽象：CommandService trait;
@@ -36,3 +40,7 @@
 - [x] Iter trait 的高级抽象和 Service Execute 事件通知处理；
 - [x] 增加网络处理层，独立处理封包和解包的逻辑;
 - [x] 网络层的安全问题处理；
+- [x] 网络层的异步处理优化重构 Stream;
+- [ ] 架构重构，利用 yamux 支持 PUB/SUB 模式;
+
+

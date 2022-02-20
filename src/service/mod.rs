@@ -5,6 +5,11 @@ use std::sync::Arc;
 use tracing::debug;
 
 mod command_service;
+mod topic;
+mod topic_service;
+
+pub use topic::{Broadcaster, Topic};
+pub use topic_service::{StreamingResponse, TopicService};
 
 /// 对 Command 的处理的抽象
 pub trait CommandService {
@@ -131,6 +136,17 @@ pub fn dispatch(cmd: CommandRequest, store: &impl Storage) -> CommandResponse {
         Some(RequestData::Hset(param)) => param.execute(store),
         None => KvError::InvalidCommand("Request has no data".into()).into(),
         _ => KvError::Internal("Not implemented".into()).into(),
+    }
+}
+
+/// 从 Request 中得到 Response，目前处理所有 PUBLISH/SUBSCRIBE/UNSUBSCRIBE
+pub fn dispatch_stream(cmd: CommandRequest, topic: impl Topic) -> StreamingResponse {
+    match cmd.request_data {
+        Some(RequestData::Publish(param)) => param.execute(topic),
+        Some(RequestData::Subscribe(param)) => param.execute(topic),
+        Some(RequestData::Unsubscribe(param)) => param.execute(topic),
+        // 如果走到这里，就是代码逻辑的问题，直接 crash 出来
+        _ => unreachable!(),
     }
 }
 

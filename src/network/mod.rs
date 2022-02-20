@@ -7,11 +7,11 @@ use futures::{SinkExt, StreamExt};
 mod frame;
 mod tls;
 mod stream;
+mod multiplex;
 
 pub use stream::ProstStream;
 pub use frame::{read_frame, FrameCoder};
 pub use tls::{TlsClientConnector, TlsServerAcceptor};
-
 
 /// 处理服务器端的某个 accept 下来的 socket 的读写
 pub struct ProstServerStream<S> {
