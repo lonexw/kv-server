@@ -3,6 +3,14 @@ name = "kv-server"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "kvs"
+path = "src/server.rs"
+
+[[bin]]
+name = "kvc"
+path = "src/client.rs"
+
 [dependencies]
 http = "0.2.6"
 thiserror = "1.0.30"
@@ -11,14 +19,14 @@ prost = "0.9" # 处理 protobuf 的代码
 tracing = "0.1.30"
 dashmap = "5.1.0"
 sled = "0.34"
-
-[dev-dependencies]
-tokio = { version = "1.16.1", features = ["rt", "rt-multi-thread", "io-util", "macros", "net"] }
-futures = "0.3"
-kv = "0.23.1"
-async-prost = "0.3.0"
+flate2 = "1" # gzip 压缩
+tokio = { version = "1.16.1", features = ["full"] }
 anyhow = "1.0.53"
 tracing-subscriber = "0.3.8"
+
+[dev-dependencies]
+futures = "0.3"
+async-prost = "0.3.0"
 tempfile = "3"
 tokio-util = { version = "0.6", features = ["codec"]}
 
